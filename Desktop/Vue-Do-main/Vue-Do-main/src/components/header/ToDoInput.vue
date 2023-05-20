@@ -27,11 +27,20 @@ export default {
       title: "",
     };
   },
+  mounted() {
+    this.addItem();
+  },
   methods: {
     addItem() {
       if (this.title.trim() === "") {
         return;
       }
+
+      const items = this.$store.state.items;
+      if (!Array.isArray(items)) {
+        this.$store.state.items = []; // Initialize state.items as an empty array if it's not already an array
+      }
+
       this.$store.commit("addItem", {
         title: this.title,
         completed: false,

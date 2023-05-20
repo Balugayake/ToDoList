@@ -3,15 +3,15 @@
     <div class="item-left">
       <input
         type="checkbox"
-        v-bind:checked="item.completed"
+        v-bind:checked="itemCopy.completed"
         v-on:change="changeCheck"
       />
     </div>
     <input
       class="item"
-      v-bind:class="{ completed: item.completed }"
+      v-bind:class="{ completed: itemCopy.completed }"
       v-bind:disabled="!isEditing"
-      v-model="item.title"
+      v-model="itemCopy.title"
       v-on:keyup.enter="updateItem"
     />
     <div class="item-right">
@@ -25,14 +25,14 @@
 export default {
   name: "ToDoItems",
   props: {
-    initialItem: {
-      type: Object,
+    item: {
+      type: [Object, Array],
       required: true,
     },
   },
   data() {
     return {
-      item: { ...this.initialItem },
+      itemCopy: { ...this.item },
       isEditing: false,
     };
   },
@@ -49,11 +49,11 @@ export default {
       this.$store.commit("deleteItem", { id });
     },
     changeCheck() {
-      this.item.completed = !this.item.completed;
+      this.itemCopy.completed = !this.itemCopy.completed;
       this.$store.commit("updateItem", {
         id: this.item.id,
-        completed: this.item.completed,
-        title: this.item.title,
+        completed: this.itemCopy.completed,
+        title: this.itemCopy.title,
       });
     },
   },

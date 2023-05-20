@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import ToDoItems from './components/body/ToDoItems.vue';
-import ToDoHeader from './components/header/ToDoHeader.vue';
+import ToDoItems from "./components/body/ToDoItems.vue";
+import ToDoHeader from "./components/header/ToDoHeader.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     ToDoHeader,
-    ToDoItems
-}
-}
+    ToDoItems,
+  },
+};
 </script>
 
 <style>
@@ -26,7 +26,7 @@ body {
 }
 
 #app {
-  font-family: 'Trebuchet MS';
+  font-family: "Trebuchet MS";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
